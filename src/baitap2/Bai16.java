@@ -18,69 +18,71 @@ import java.util.Scanner;
  * @author Jocelyn
  */
 public class Bai16 {
-    public static List<MatHang> docFile(String filename) throws FileNotFoundException{
+
+    public static List<MatHang> docFile(String filename) throws FileNotFoundException {
         Scanner input = new Scanner(new File(filename));
         List<MatHang> ds = new ArrayList<>();
-        while(input.hasNextLine()){
-            int maHang = Integer.parseInt(input.nextLine());
-            String ten = input.nextLine();
-            String nhom = input.nextLine();
-            double giaBan = Double.parseDouble(input.nextLine());
+        while (input.hasNextLine()) {
             try {
+                int maHang = Integer.parseInt(input.nextLine());
+                String ten = input.nextLine();
+                String nhom = input.nextLine();
+                double giaBan = Double.parseDouble(input.nextLine());
+
                 MatHang mh = new MatHang(maHang, ten, nhom, giaBan);
                 ds.add(mh);
             } catch (Exception ex) {
-                
+
             }
-            
+
         }
         return ds;
     }
-    
-    public static void inDsMH(List<MatHang> l){
-        for(MatHang mh: l){
+
+    public static void inDsMH(List<MatHang> l) {
+        for (MatHang mh : l) {
             System.out.println(mh.toString());
         }
     }
-    
-    public static void sapXepGiaBanGiam(List<MatHang> l){
-        l.sort(new Comparator<MatHang>(){
+
+    public static void sapXepGiaBanGiam(List<MatHang> l) {
+        l.sort(new Comparator<MatHang>() {
             @Override
             public int compare(MatHang o1, MatHang o2) {
                 return o2.soSanhGia(o1);
             }
-            
+
         });
     }
-    
-    public static void ghiFileSX(List<MatHang> l) throws FileNotFoundException{
+
+    public static void ghiFileSX(List<MatHang> l) throws FileNotFoundException {
         PrintWriter pw = new PrintWriter(new File("SX-BAI16.OUT"));
-        for(MatHang mh: l){
+        for (MatHang mh : l) {
             pw.println(mh.toString());
         }
         pw.flush();
         pw.close();
     }
-    
-    public static void sapXepTheoNhom(List<MatHang> l){
-        l.sort(new Comparator<MatHang>(){
+
+    public static void sapXepTheoNhom(List<MatHang> l) {
+        l.sort(new Comparator<MatHang>() {
             @Override
             public int compare(MatHang o1, MatHang o2) {
                 return o1.soSanhNhom(o2) & o1.soSanhTen(o2);
             }
-            
+
         });
     }
-    
-    public static void ghiFileNHOM(List<MatHang> l) throws FileNotFoundException{
+
+    public static void ghiFileNHOM(List<MatHang> l) throws FileNotFoundException {
         PrintWriter pw = new PrintWriter(new File("NHOM.OUT"));
-        for(MatHang mh: l){
+        for (MatHang mh : l) {
             pw.println(mh.toString());
         }
         pw.flush();
         pw.close();
     }
-    
+
     public static void main(String[] args) throws FileNotFoundException {
         List<MatHang> ds = docFile("MH.INP");
         inDsMH(ds);

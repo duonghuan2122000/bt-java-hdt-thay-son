@@ -25,11 +25,12 @@ public class Bai15 {
         Scanner input = new Scanner(new File(file));
         List<SinhVien2> ds = new ArrayList<>();
         while (input.hasNextLine()) {
-            int maSV = Integer.parseInt(input.nextLine());
-            String ten = input.nextLine();
-            String lop = input.nextLine();
-            double dtb = Double.parseDouble(input.nextLine());
             try {
+                int maSV = Integer.parseInt(input.nextLine());
+                String ten = input.nextLine();
+                String lop = input.nextLine();
+                double dtb = Double.parseDouble(input.nextLine());
+
                 SinhVien2 sv = new SinhVien2(maSV, ten, lop, dtb);
                 ds.add(sv);
             } catch (Exception ex) {
@@ -53,7 +54,7 @@ public class Bai15 {
             }
 
         });
-        
+
         l.sort(new Comparator<SinhVien2>() {
             @Override
             public int compare(SinhVien2 o1, SinhVien2 o2) {
@@ -62,17 +63,17 @@ public class Bai15 {
 
         });
     }
-    
-    public static void ghiFileSX(List<SinhVien2> l) throws FileNotFoundException{
+
+    public static void ghiFileSX(List<SinhVien2> l) throws FileNotFoundException {
         PrintWriter pw = new PrintWriter(new File("SX.OUT"));
-        for(SinhVien2 sv: l){
+        for (SinhVien2 sv : l) {
             pw.println(sv.toString());
         }
         pw.flush();
         pw.close();
     }
-    
-    public static void sapXepTheoDiemPL(List<SinhVien2> l){
+
+    public static void sapXepTheoDiemPL(List<SinhVien2> l) {
         l.sort(new Comparator<SinhVien2>() {
             @Override
             public int compare(SinhVien2 o1, SinhVien2 o2) {
@@ -81,20 +82,20 @@ public class Bai15 {
 
         });
     }
-    
-    public static void sapXepTheoTen(List<SinhVien2> l){
-        l.sort(new Comparator<SinhVien2>(){
+
+    public static void sapXepTheoTen(List<SinhVien2> l) {
+        l.sort(new Comparator<SinhVien2>() {
             @Override
             public int compare(SinhVien2 o1, SinhVien2 o2) {
                 return o1.soSanhTen(o2);
             }
-            
+
         });
     }
-    
-    public static void ghiFileXL(List<SinhVien2> l) throws FileNotFoundException{
+
+    public static void ghiFileXL(List<SinhVien2> l) throws FileNotFoundException {
         PrintWriter pw = new PrintWriter(new File("XEPLOAI.OUT"));
-        for(SinhVien2 sv: l){
+        for (SinhVien2 sv : l) {
             pw.write(sv.toString() + "\n");
         }
         pw.flush();
@@ -108,7 +109,7 @@ public class Bai15 {
         ghiFileSX(ds);
         sapXepTheoTen(ds);
         sapXepTheoDiemPL(ds);
-        
+
         ghiFileXL(ds);
     }
 }

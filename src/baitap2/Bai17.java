@@ -25,11 +25,12 @@ public class Bai17 {
         Scanner input = new Scanner(new File(filename));
         List<Sach> ds = new ArrayList<>();
         while (input.hasNextLine()) {
-            int maSach = Integer.parseInt(input.nextLine());
-            String tenSach = input.nextLine();
-            String chuyenNganh = input.nextLine();
-            double giaBan = Double.parseDouble(input.nextLine());
             try {
+                int maSach = Integer.parseInt(input.nextLine());
+                String tenSach = input.nextLine();
+                String chuyenNganh = input.nextLine();
+                double giaBan = Double.parseDouble(input.nextLine());
+
                 Sach s = new Sach(maSach, tenSach, chuyenNganh, giaBan);
                 ds.add(s);
             } catch (Exception ex) {
@@ -72,7 +73,7 @@ public class Bai17 {
             }
 
         });
-        
+
         l.sort(new Comparator<Sach>() {
             @Override
             public int compare(Sach o1, Sach o2) {
@@ -81,7 +82,6 @@ public class Bai17 {
 
         });
     }
-    
 
     public static void main(String[] args) throws FileNotFoundException {
         List<Sach> ds = docFile("SACH.INP");
